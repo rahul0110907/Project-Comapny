@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
-const Signup = ({ JSONFileData, users }) => {
+const Signup = ({ JSONFileData}) => {
+  const navigate =useNavigate();
  
 
   const [name, setName] = useState("");
@@ -12,9 +14,14 @@ const Signup = ({ JSONFileData, users }) => {
     e.preventDefault();
     if (name && mobile && password) {
       const userData = { name, mobile, password };
+    
+       JSONFileData(userData);
+     
+      alert('Registration Successfully')
+      setTimeout(()=>{
+        navigate('/Login')
+      },2000)
 
-      JSONFileData(userData);
-      alert('Registeration Successfully Please Login ')
     
     
     }

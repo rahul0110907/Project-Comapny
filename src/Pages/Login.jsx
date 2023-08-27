@@ -1,6 +1,9 @@
 import React,{useState} from "react";
+import { useNavigate } from "react-router-dom";
+
 const Login = ({users,LoginPage}) => {
 
+    const navigate = useNavigate();
    
       const [mobile, setMobile] = useState("");
       const [password, setPassword] = useState("");
@@ -23,22 +26,26 @@ const Login = ({users,LoginPage}) => {
       const handlelogIn=(e)=>{
         e.preventDefault();
         if (!mobile) {
-          setErrMobile("Enter your email");
+          setErrMobile("Enter your Mobile Number");
         }
         if (!password) {
           setErrPassword("Enter your password");
         }
         
-
         const user=users.find(user=>user.mobile===mobile && user.password===password);
         if(user){
             LoginPage(user);
+            navigate('/Todo')
+            alert("Login Successfully");
           
         }else{
             alert('User Not Found');
         }
-       
+
+        setMobile('');
+        setPassword('')
       }
+      
 
   return (
     <div className="w-full flex justify-center items-center">

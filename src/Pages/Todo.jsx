@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 
-const Todo = () => {
+const Todo = ({currentUser}) => {
     const[todo ,setTodo]=useState('');
     const[todos,setTodos]=useState([]);
   
@@ -21,7 +21,8 @@ const Todo = () => {
     }
   
   return (
-    <div className="min-h-[100px] flex justify-center items-center bg-black">
+    <div className="min-h-[100px] flex justify-center items-center bg-black  flex-col">
+       <h1 className="flex justify-center items-center  text-3xl font-bold text-white">Welcome, {currentUser.name}!</h1>
     <div className='flex flex-col border border-gray-500 h-[100vh] mt-5 mb-5 items-center justify-center p-5 text-lg text-white overflow-hidden'>
       <h1 className='mb-5 text-3xl font-bold'>Todo List</h1>
       <form  onSubmit={handleSubmit} className='flex w-[500px] justify-around'>
